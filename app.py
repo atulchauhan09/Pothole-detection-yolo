@@ -45,17 +45,56 @@
 
 #         result_img = results[0].plot()
 #         st.image(result_img, caption="Detection Result")
-import streamlit as st
+# import streamlit as st
 
 # from ultralytics import YOLO
+# from PIL import Image
+# import numpy as np
+# import os
+
+# st.title("Pothole Detection System")
+
+# model_path = "best.pt"  # ✅ FIXED
+
+# if not os.path.exists(model_path):
+#     st.error("Model not found! Please check path.")
+#     st.stop()
+
+# model = load_model()
+
+# uploaded_file = st.file_uploader("Upload Image")
+
+# if uploaded_file:
+#     image = Image.open(uploaded_file)
+#     st.image(image, caption="Uploaded Image")
+
+#     if st.button("Detect"):
+#         image_np = np.array(image)
+#         results = model(image_np, conf=0.2)
+
+#         result_img = results[0].plot()
+#         st.image(result_img, caption="Detection Result")
+
+
+import streamlit as st
 from PIL import Image
 import numpy as np
 import os
 
 st.title("Pothole Detection System")
 
-model_path = "best.pt"  # ✅ FIXED
+model_path = "best.pt"
 
+
+# ✅ DEFINE FUNCTION FIRST
+@st.cache_resource
+def load_model():
+    from ultralytics import YOLO
+
+    return YOLO(model_path)
+
+
+# ✅ THEN USE IT
 if not os.path.exists(model_path):
     st.error("Model not found! Please check path.")
     st.stop()
