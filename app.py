@@ -60,7 +60,7 @@ if not os.path.exists(model_path):
     st.error("Model not found! Please check path.")
     st.stop()
 
-model = YOLO(model_path)
+model = load_model()
 
 uploaded_file = st.file_uploader("Upload Image")
 
