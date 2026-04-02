@@ -46,7 +46,8 @@
 #         result_img = results[0].plot()
 #         st.image(result_img, caption="Detection Result")
 import streamlit as st
-from ultralytics import YOLO
+
+# from ultralytics import YOLO
 from PIL import Image
 import numpy as np
 import os
