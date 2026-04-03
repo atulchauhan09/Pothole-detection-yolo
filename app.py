@@ -132,9 +132,15 @@ if not os.path.exists(model_path):
 # ✅ Load model safely (fix cv2 crash)
 @st.cache_resource
 def load_model():
+    import os
+
+    os.environ["OPENCV_IO_ENABLE_OPENEXR"] = "1"  # safety fix
     from ultralytics import YOLO
 
     return YOLO(model_path)
+    # from ultralytics import YOLO
+
+    # return YOLO(model_path)
 
 
 model = load_model()
