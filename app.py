@@ -173,8 +173,9 @@ MODEL_PATH = "best.pt"
 def load_model():
     # ✅ Download ONLY if not exists
     if not os.path.exists(MODEL_PATH):
+        # url = "https://drive.google.com/uc?export=download&id=1Xclx_BRdkR32q2wdlHaT9adbuyIllrqr"
         url = "https://drive.google.com/uc?export=download&id=1Xclx_BRdkR32q2wdlHaT9adbuyIllrqr"
-        gdown.download(url, MODEL_PATH, quiet=False)
+        gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
 
     from ultralytics import YOLO
 
