@@ -162,7 +162,7 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import os
-import gdown
+import requests
 
 st.title("Pothole Detection System")
 
@@ -173,9 +173,15 @@ MODEL_PATH = "best.pt"
 def load_model():
     # ✅ Download ONLY if not exists
     if not os.path.exists(MODEL_PATH):
-        # url = "https://drive.google.com/uc?export=download&id=1Xclx_BRdkR32q2wdlHaT9adbuyIllrqr"
         url = "https://drive.google.com/uc?export=download&id=1Xclx_BRdkR32q2wdlHaT9adbuyIllrqr"
-        gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
+
+        with st.spinner("Downloading model..."):
+            response = requests.get(url, stream=True)
+
+            with open(MODEL_PATH, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
 
     from ultralytics import YOLO
 
