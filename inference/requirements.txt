@@ -1,0 +1,35 @@
+# fastapi>=0.110.0
+# uvicorn[standard]>=0.27.0
+# ultralytics>=8.2.0
+# torch>=2.1.0
+# pillow>=10.0.0
+# python-multipart>=0.0.9
+# streamlit
+# ultralytics
+# torch
+# pillow
+# numpy
+
+# numpy
+# torchstreamlit
+# ultralytics
+# opencv-python-headless
+# pillow
+# streamlit==1.32.0
+# ultralytics==8.2.0
+# opencv-python-headless==4.9.0.80
+# pillow==10.2.0
+# numpy==1.26.4
+# torch==2.2.0
+streamlit
+pillow
+numpy
+ultralytics==8.0.20
+opencv-python-headless
+gdown
+# streamlit==1.32.0
+# pillow==10.2.0
+# numpy==1.26.4
+# ultralytics==8.0.20
+# opencv-python-headless==4.9.0.80
+# gdown==5.1.0

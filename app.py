@@ -1,12 +1,19 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-from ultralytics import YOLO
+import torch
 
 st.title("Pothole Detection System")
 
-# ✅ Load model directly from repo
-model = YOLO("best.pt")
+
+# ✅ Load YOLOv5 model (stable)
+@st.cache_resource
+def load_model():
+    model = torch.hub.load("ultralytics/yolov5", "custom", path="best.pt")
+    return model
+
+
+model = load_model()
 
 uploaded_file = st.file_uploader("Upload Image")
 
@@ -15,5 +22,6 @@ if uploaded_file:
     st.image(image)
 
     if st.button("Detect"):
-        results = model(np.array(image), conf=0.2)
-        st.image(results[0].plot())
+        results = model(np.array(image))
+        results.render()
+        st.image(results.ims[0])
