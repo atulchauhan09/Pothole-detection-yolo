@@ -9,7 +9,13 @@
 # torch
 # pillow
 # numpy
-streamlit
-ultralytics
-pillow
-numpy
+# streamlit
+# ultralytics
+# pillow
+# numpy
+streamlit==1.32.0
+pillow==10.2.0
+numpy==1.26.4
+ultralytics==8.0.20
+opencv-python-headless==4.9.0.80
+gdown==5.1.0
