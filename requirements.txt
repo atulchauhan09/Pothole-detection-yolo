@@ -1,5 +1,5 @@
 streamlit
 pillow
 numpy
-ultralytics
+ultralytics>=8.2.0
 opencv-python-headless
