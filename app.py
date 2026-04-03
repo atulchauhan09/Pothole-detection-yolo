@@ -45,16 +45,28 @@ FILE_ID = "1Xclx_BRdkR32q2wdlHaT9adbuyIllrqr"
 #     return YOLO(MODEL_PATH)
 @st.cache_resource
 def load_model():
-    if not os.path.exists(MODEL_PATH):
-        url = "https://github.com/atulchauhan09/Pothole-detection-yolo/releases/download/v1.0/best.pt"
+    import os
+    import requests
 
-        with st.spinner("Downloading model..."):
-            response = requests.get(url, stream=True)
+    MODEL_PATH = "best.pt"
+    url = "https://github.com/atulchauhan09/Pothole-detection-yolo/releases/download/v1.0/best.pt"
 
-            with open(MODEL_PATH, "wb") as f:
-                for chunk in response.iter_content(8192):
-                    if chunk:
-                        f.write(chunk)
+    # 🚨 ALWAYS delete old corrupted file
+    if os.path.exists(MODEL_PATH):
+        os.remove(MODEL_PATH)
+
+    with st.spinner("Downloading model..."):
+        response = requests.get(url, stream=True)
+
+        with open(MODEL_PATH, "wb") as f:
+            for chunk in response.iter_content(8192):
+                if chunk:
+                    f.write(chunk)
+
+    # ✅ Check file size (IMPORTANT)
+    if os.path.getsize(MODEL_PATH) < 5_000_000:
+        st.error("Model download failed properly")
+        st.stop()
 
     from ultralytics import YOLO
 
