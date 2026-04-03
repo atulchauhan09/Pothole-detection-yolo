@@ -119,12 +119,13 @@ import numpy as np
 import os
 import gdown
 
-st.title("Pothole Detection System")
+# st.title("Pothole Detection System")
 
 model_path = "best.pt"
 
 # ✅ Download model if not present
-if not os.path.exists(model_path):
+if os.path.exists(model_path):
+    os.remove(model_path)
     url = "https://drive.google.com/uc?id=1Xclx_BRdkR32q2wdlHaT9adbuyIllrqr"
     gdown.download(url, model_path, quiet=False)
 
