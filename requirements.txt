@@ -1,6 +1,6 @@
 streamlit
 pillow
 numpy
-ultralytics==8.0.20
+ultralytics==8.0.6
 # opencv-python-headless
 gdown
